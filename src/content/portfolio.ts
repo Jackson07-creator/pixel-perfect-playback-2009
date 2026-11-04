@@ -31,20 +31,11 @@ export const education = [
 ];
 
 export const skills: Record<string, string[]> = {
-  Programming: ["Python", "Skill", "Skill"],
+  Programming: ["C++", "Java", "Python"],
   "Web Development": ["HTML", "CSS", "Angular"],
-  "Artificial Intelligence & Machine Learning": ["Data Science", "Skill", "Skill"],
-  "Tools & Technologies": ["Tool", "Tool", "Tool"],
+  "Artificial Intelligence & Machine Learning": ["Python Programming", "Machine Learning Basics", "Design & Analysis of Algorithms"],
+  "Tools & Technologies": ["Visual Studio Code (VS Code)", "Google Colab", "GitHub"],
 };
-
-export const projects = [1, 2, 3].map((n) => ({
-  title: `Project Title ${n}`,
-  description: "A short description of what this project does, the problem it solves and what you learned building it.",
-  tech: ["Technology", "Technology"],
-  github: "#",
-  demo: "#",
-  image: "" as string,
-}));
 
 export const certificates = [
   { title: "Angular", org: "Infosys Springboard", image: infosysImg.url, file: infosysPdf.url },
