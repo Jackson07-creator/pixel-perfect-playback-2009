@@ -1,5 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createRouter, rootRouteId } from "@tanstack/react-router";
+import { createMemoryHistory, createRouter, rootRouteId } from "@tanstack/react-router";
 import { describe, expect, it } from "vitest";
 
 import { routeTree } from "@/routeTree.gen";
@@ -11,9 +11,12 @@ describe("App routing", () => {
     const router = createRouter({
       routeTree,
       basepath: "/pixel-perfect-playback-2009/",
+      history: createMemoryHistory({ initialEntries: ["/pixel-perfect-playback-2009/"] }),
       context: { queryClient: new QueryClient() },
     });
-    expect(router.matchRoutes("/pixel-perfect-playback-2009/").at(-1)?.routeId).toBe("/");
+    expect(router.latestLocation.pathname).toBe("/");
+    expect(router.matchRoutes(router.latestLocation).at(-1)?.routeId).toBe("/");
+    expect(router.buildLocation({ to: "/" }).publicHref).toBe("/pixel-perfect-playback-2009/");
   });
 
   it("matches a page for / instead of falling back to not found", () => {

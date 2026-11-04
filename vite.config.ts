@@ -7,7 +7,7 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // The dedicated Pages mode leaves Lovable development/publishing unchanged.
-const githubPages = process.env.GITHUB_PAGES === "true";
+const githubPages = process.env["GITHUB_PAGES"] === "true";
 const base = githubPages ? "/pixel-perfect-playback-2009/" : "/";
 
 export default defineConfig({
