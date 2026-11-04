@@ -6,10 +6,21 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// The dedicated Pages mode leaves Lovable development/publishing unchanged.
+const githubPages = process.env["GITHUB_PAGES"] === "true";
+const base = githubPages ? "/pixel-perfect-playback-2009/" : "/";
+
 export default defineConfig({
+  vite: { base },
+  ...(githubPages ? { nitro: false as const } : {}),
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    ...(githubPages ? {
+      router: { basepath: base },
+      pages: [{ path: "/" }],
+      prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
+    } : {}),
   },
 });

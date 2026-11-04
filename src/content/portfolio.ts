@@ -10,6 +10,9 @@ import aiPdf from "@/assets/certs/ai-for-business-professionals.pdf.asset.json";
 import dsImg from "@/assets/certs/data-science-analytics-1.jpg.asset.json";
 import dsPdf from "@/assets/certs/data-science-analytics-1.pdf.asset.json";
 
+// Keep the same certificate files at both the root preview and Pages subpath.
+const assetUrl = (url: string) => `${import.meta.env.BASE_URL}${url.replace(/^\//, "")}`;
+
 export const profile = {
   name: "Jackson J",
   tagline: "Curious mind. Building what's next.",
@@ -38,11 +41,11 @@ export const skills: Record<string, string[]> = {
 };
 
 export const certificates = [
-  { title: "Angular", org: "Infosys Springboard", image: infosysImg.url, file: infosysPdf.url },
-  { title: "Python for Data Science", org: "NPTEL / IIT Madras", image: nptelImg.url, file: nptelPdf.url },
-  { title: "Strategic Planning in the AI Age", org: "HP LIFE", image: spImg.url, file: spPdf.url },
-  { title: "AI for Business Professionals", org: "HP LIFE", image: aiImg.url, file: aiPdf.url },
-  { title: "Data Science & Analytics", org: "HP LIFE", image: dsImg.url, file: dsPdf.url },
+  { title: "Angular", org: "Infosys Springboard", image: assetUrl(infosysImg.url), file: assetUrl(infosysPdf.url) },
+  { title: "Python for Data Science", org: "NPTEL / IIT Madras", image: assetUrl(nptelImg.url), file: assetUrl(nptelPdf.url) },
+  { title: "Strategic Planning in the AI Age", org: "HP LIFE", image: assetUrl(spImg.url), file: assetUrl(spPdf.url) },
+  { title: "AI for Business Professionals", org: "HP LIFE", image: assetUrl(aiImg.url), file: assetUrl(aiPdf.url) },
+  { title: "Data Science & Analytics", org: "HP LIFE", image: assetUrl(dsImg.url), file: assetUrl(dsPdf.url) },
 ];
 
 export const exploring = ["Artificial Intelligence", "Machine Learning", "Python Development", "Data Science"];
