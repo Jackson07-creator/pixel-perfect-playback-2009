@@ -96,7 +96,7 @@ function Index() {
         <section className="mx-auto grid max-w-6xl items-end gap-12 px-6 pb-24 pt-16 md:grid-cols-12 md:pt-28">
           <Reveal className="md:col-span-7">
             <p className="eyebrow mb-8">{profile.role}</p>
-            <h1 className="text-6xl leading-[0.95] text-primary md:text-8xl">{profile.name}</h1>
+            <h1 className="text-5xl leading-[0.95] text-primary sm:text-6xl md:text-8xl">{profile.name}</h1>
             <p className="mt-6 font-display text-2xl italic md:text-3xl">{profile.tagline}</p>
             <p className="mt-8 max-w-md leading-relaxed text-muted-foreground">{profile.intro}</p>
             <div className="mt-10 flex flex-wrap gap-3">
@@ -177,9 +177,14 @@ function Index() {
           <Reveal><h2 className="text-4xl md:text-6xl">Let's talk.</h2></Reveal>
           <div className="mt-12">
             {contacts.map((c) => (
-              <a key={c.label} href={c.href} className="group flex items-baseline justify-between border-b border-border py-5 transition-colors hover:text-primary">
-                <span className="eyebrow">{c.label}</span>
-                <span className="font-display text-xl md:text-2xl">{c.value} <span className="inline-block transition-transform group-hover:translate-x-1">↗</span></span>
+              <a
+                key={c.label}
+                href={c.href}
+                {...(c.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+                className="group flex flex-col gap-1 border-b border-border py-5 transition-colors hover:text-primary sm:flex-row sm:items-baseline sm:justify-between"
+              >
+                <span className="eyebrow shrink-0">{c.label}</span>
+                <span className="min-w-0 break-all font-display text-lg sm:text-right sm:text-xl md:text-2xl">{c.value} <span className="inline-block transition-transform group-hover:translate-x-1">↗</span></span>
               </a>
             ))}
           </div>

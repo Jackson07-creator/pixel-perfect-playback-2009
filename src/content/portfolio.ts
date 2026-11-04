@@ -48,7 +48,7 @@ export const certificates = [
 export const exploring = ["Artificial Intelligence", "Machine Learning", "Python Development", "Data Science"];
 
 export const contacts = [
-  { label: "Email", value: "your.email@example.com", href: "mailto:your.email@example.com" },
-  { label: "GitHub", value: "github.com/your-username", href: "#" },
-  { label: "LinkedIn", value: "linkedin.com/in/your-profile", href: "#" },
+  { label: "Email", value: "Jackson.25bscaiml@kprcas.ac.in", href: "mailto:Jackson.25bscaiml@kprcas.ac.in" },
+  { label: "GitHub", value: "github.com/Jackson07-creator", href: "https://github.com/Jackson07-creator" },
+  { label: "LinkedIn", value: "linkedin.com/in/jackson-j-4ba998382", href: "https://www.linkedin.com/in/jackson-j-4ba998382" },
 ];
