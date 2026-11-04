@@ -9,6 +9,7 @@
 
 ## GitHub Pages deployment
 
-- [ ] Configure a static build and asset/router paths for `/pixel-perfect-playback-2009/`, preserving the root-path Lovable preview.
-- [ ] Add an npm-based GitHub Actions workflow deploying only static files from `dist` on pushes to `main`.
-- [ ] Verify routing, deployment configuration, and the existing portfolio flow; document any GitHub-side setup still required.
+- [x] Configure a static build and asset/router paths for `/pixel-perfect-playback-2009/`, preserving the root-path Lovable preview.
+- [x] Add an npm-based GitHub Actions workflow deploying only static files from `dist` on pushes to `main`.
+- [x] Verify subpath routing tests, static certificate packaging, and the existing portfolio flow; document GitHub-side setup.
+- [ ] Confirm repository sync and the first live Pages deployment — requires GitHub Pages source set to GitHub Actions and a successful synced workflow run; Git connection status is unavailable to the agent.

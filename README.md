@@ -22,3 +22,27 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## GitHub Pages
+
+The workflow in `.github/workflows/deploy.yml` installs dependencies with npm,
+tests routing, builds the static portfolio, and deploys `dist` on pushes to
+`main` (or a manual Actions run).
+
+In `Jackson07-creator/pixel-perfect-playback-2009`, open **Settings → Pages**
+and select **GitHub Actions** as the source. GitHub Pages must be available for
+the repository's visibility and your GitHub plan.
+
+The deployed URL is:
+https://jackson07-creator.github.io/pixel-perfect-playback-2009/
+
+The workflow sets `GITHUB_PAGES=true` to use the repository subpath and
+prerender the portfolio. It then packages only static client files in `dist`,
+including all original certificate images and PDFs downloaded from the current
+asset host. The workflow fails rather than deploying missing certificates.
+Normal Lovable preview and publishing continue to use `/`.
+
+Lovable manages commits and repository synchronization through the connected
+Git integration. Check the Git panel and the repository's Actions tab to
+confirm synchronization and the first deployment; adding this workflow alone
+does not confirm a successful live deployment.
