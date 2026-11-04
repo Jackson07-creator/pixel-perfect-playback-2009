@@ -1,28 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { about, certificates, contacts, education, exploring, profile, projects, skills } from "@/content/portfolio";
+import { about, certificates, contacts, education, exploring, profile, skills } from "@/content/portfolio";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Jackson J — AI & Machine Learning Student" },
-      { name: "description", content: "Portfolio of Jackson J, B.Sc. Artificial Intelligence and Machine Learning student: projects, skills and certificates." },
+      { name: "description", content: "Portfolio of Jackson J, B.Sc. Artificial Intelligence and Machine Learning student: education, skills and certificates." },
       { property: "og:title", content: "Jackson J — AI & Machine Learning Student" },
       { property: "og:description", content: "Curious mind. Building what's next." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
 });
 
 const nav = [
-  ["about", "About"], ["education", "Education"], ["skills", "Skills"], ["projects", "Projects"],
+  ["about", "About"], ["education", "Education"], ["skills", "Skills"],
   ["certificates", "Certificates"], ["contact", "Contact"],
 ];
 
 function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const el = ref.current!;
+    const el = ref.current;
+    if (!el) return;
     const io = new IntersectionObserver(([e]) => e?.isIntersecting && (el.classList.add("in"), io.disconnect()), { threshold: 0.12 });
     io.observe(el);
     return () => io.disconnect();
@@ -97,7 +100,6 @@ function Index() {
             <p className="mt-6 font-display text-2xl italic md:text-3xl">{profile.tagline}</p>
             <p className="mt-8 max-w-md leading-relaxed text-muted-foreground">{profile.intro}</p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <a href="#projects" className={`${btn} bg-primary text-primary-foreground hover:-translate-y-0.5`}>Explore My Work →</a>
               <a href="#contact" className={`${btn} border border-primary text-primary hover:bg-primary hover:text-primary-foreground`}>Contact Me</a>
             </div>
           </Reveal>
@@ -136,31 +138,8 @@ function Index() {
               <Reveal key={cat}>
                 <h3 className="text-2xl">{cat}</h3>
                 <ul className="mt-5 flex flex-wrap gap-2">
-                  {list.map((s, i) => <li key={i} className="rounded-full border border-border px-4 py-1.5 text-sm transition-colors hover:bg-sage">{s}</li>)}
+                  {list.map((s, i) => <li key={i} className="max-w-full rounded-full border border-border px-4 py-1.5 text-sm transition-colors duration-300 hover:bg-sage motion-reduce:transition-none">{s}</li>)}
                 </ul>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-
-        <Section id="projects" num="04" label="Projects">
-          <div className="space-y-20">
-            {projects.map((p, i) => (
-              <Reveal key={i} className={`grid items-center gap-8 md:grid-cols-2 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-                <div className="group aspect-[4/3] overflow-hidden bg-sage">
-                  {p.image ? <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    : <div className="flex h-full items-center justify-center eyebrow">Project image</div>}
-                </div>
-                <div>
-                  <p className="eyebrow">0{i + 1}</p>
-                  <h3 className="mt-3 text-3xl">{p.title}</h3>
-                  <p className="mt-4 leading-relaxed text-muted-foreground">{p.description}</p>
-                  <p className="mt-4 text-sm">{p.tech.join(" · ")}</p>
-                  <div className="mt-6 flex gap-6 text-sm font-medium text-primary">
-                    <a href={p.github} className="link-underline">GitHub ↗</a>
-                    <a href={p.demo} className="link-underline">Live demo ↗</a>
-                  </div>
-                </div>
               </Reveal>
             ))}
           </div>
