@@ -27,7 +27,9 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Install dependencies with npm
-        run: npm install --no-audit --no-fund
+        # --legacy-peer-deps: npm's default resolver crashes on this dependency
+        # tree ("edgesOut" of null); legacy resolution installs it cleanly.
+        run: npm ci --no-audit --no-fund --legacy-peer-deps
       - name: Test routing
         run: npm test -- src/test/app-routing.test.tsx
       - name: Build static portfolio
