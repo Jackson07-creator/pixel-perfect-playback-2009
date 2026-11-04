@@ -23,7 +23,7 @@ function Reveal({ children, className = "" }: { children: ReactNode; className?:
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current!;
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && (el.classList.add("in"), io.disconnect()), { threshold: 0.12 });
+    const io = new IntersectionObserver(([e]) => e?.isIntersecting && (el.classList.add("in"), io.disconnect()), { threshold: 0.12 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
