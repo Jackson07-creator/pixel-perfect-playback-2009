@@ -51,5 +51,4 @@ export const contacts = [
   { label: "Email", value: "your.email@example.com", href: "mailto:your.email@example.com" },
   { label: "GitHub", value: "github.com/your-username", href: "#" },
   { label: "LinkedIn", value: "linkedin.com/in/your-profile", href: "#" },
-  { label: "Instagram", value: "@your-handle", href: "#" },
 ];
